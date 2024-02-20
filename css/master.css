@@ -48,6 +48,30 @@ main {
                     background-color:aqua;
                     transform: scale(1.02);
                 }
+                &:is(:hover) a span {
+                    transform: scale(1.1) rotateZ(360deg);
+                }
+
+                a:is(:link, :visited){
+                    display: flex;
+                    align-items: center;
+                    padding: 0.5rem;
+                    text-decoration: none;
+                    gap: 1rem;
+                    color: #009;
+
+                    span{
+                        background-color: #009;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        height: 36px;
+                        transition: all 0.4s ease-in-out;
+                        width: 36px;
+                    }
+                }
             }
         }
     }
