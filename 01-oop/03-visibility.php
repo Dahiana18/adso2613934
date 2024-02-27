@@ -50,7 +50,10 @@
                 }
                 table td{
                     border: 1px;
+                    width: 30px; 
+                    height: 30px;
                 }
+           
 
             }
         }
@@ -88,21 +91,38 @@
                         return '<table>';
                     }
 
-                    private function contentTable() {
-                        return '<tr>  
-                                    <td></td>
-                                </tr>';
+                    private function contentTable()  {
+                        echo "<table border = '1'>";
+                        for ($i = 0; $i < $this->nr; $i++) {
+                                echo '<tr>';
+                            for ($j = 0; $j < $this->nc; $j++) {
+                                echo "<td style='width:50px; height:20px; text-align:center;'></td>"
+                                ;
+                            }
+                        }
                     }
+                        
 
                     private function endTable() {
                         return '</table>';
                     }
 
                 }
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Get user input for rows and columns
+                    $numRows = isset($_POST['nr']) ? intval($_POST['nr']) : 1;
+                    $numCols = isset($_POST['nc']) ? intval($_POST['nc']) : 1;
+                
+                    // Create TableMaker object and draw table
+                    $tableMaker = new TableMaker($numRows, $numCols);
+                    $tableMaker->drawTable();
+                }
 
-                $table = new TableMaker(10, 8);
-                $table->drawTable();
+
+
             ?>
+            </section>
+            <section>
             <h2>Table Maker</h2>
             <form action="" method="post">
             <label>
@@ -118,6 +138,7 @@
             <button> Make Table </button>
         </form>
         </section>
+        
     </main>
 </body>
 </html>
