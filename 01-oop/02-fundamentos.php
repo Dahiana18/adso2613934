@@ -36,10 +36,9 @@
                 display: flex;
                 justify-content: space-between;
                 gap: 1rem;
-                width: 100%;
-                button {
-                    border: 2px solid #fff6;
-                    background-color: #994bde;
+                width: 90%;
+            button {
+                    
                     border-radius: 8px;
                     color: #fff9;
                     cursor: pointer;
@@ -47,6 +46,11 @@
                     width: 100px;
                     padding: 0.6rem;
                 }
+            .botones{
+                display:flex;
+                justify-content:space-around;
+
+            }
             }
         }
     </style>
@@ -76,19 +80,19 @@
                     }
 
                     public function run() {
-                        return "<img src='gif/sonic-fnf.gif' alt=''>";
+                        return "<img src='gif/sonic-fnf.gif' width='400px' height='300' alt=''>";
                     }
 
                     public function stop() {
-                        return "<img src='gif/parar.gif' alt=''>";
+                        return "<img src='gif/parar.gif' width='400px' height='300'alt=''>";
                     }
 
                     public function jump() {
-                        return "<img src='gif/saltar.gif' alt=''>";
+                        return "<img src='gif/saltar.gif' width='400px' height='300' alt=''>";
                     }
                 }
 
-                $runner = new Runner('Usain Bolt', 35, 105);
+                $runner = new Runner('Zonic', 35, 105);
 
             ?>
             <h2>Class Runner</h2>
@@ -112,12 +116,16 @@
                         }
                     }
                 ?>
+
+                
             </figure>
 
             <form action="" method="post">
-                <button name="run"> Run </button> 
-                <button name="stop"> Stop </button>
+                <div class="botones">
+                <button name="run"> Run </button>                              
+                <button name="stop"> Stop </button>                             
                 <button name="jump"> Jump </button>
+                </div>
             </form>
         </section>
     </main>
