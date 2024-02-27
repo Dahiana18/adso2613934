@@ -124,7 +124,7 @@
                 <div class="botones">
                 <button name="run"> Run </button>                              
                 <button name="stop"> Stop </button>                             
-                <button name="jump"> Jump </button>
+                <button name="jump"> Spin </button>
                 </div>
             </form>
         </section>
