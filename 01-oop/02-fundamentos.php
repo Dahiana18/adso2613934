@@ -76,15 +76,15 @@
                     }
 
                     public function run() {
-                        return "<img src ='sonic-fnf.gif'";
+                        return "<img src='gif/sonic-fnf.gif' alt=''>";
                     }
 
                     public function stop() {
-                        return "🧎🏻‍♂️";
+                        return "<img src='gif/parar.gif' alt=''>";
                     }
 
                     public function jump() {
-                        return "🚶🏻‍♂️";
+                        return "<img src='gif/saltar.gif' alt=''>";
                     }
                 }
 
@@ -100,19 +100,24 @@
             <figure>
 
                 <?php
-                                     
-                    echo $runner->run();
-                    echo $runner->jump();
-                    echo $runner->stop();
-                    echo $runner->run();
-                   
+                                    
+                                       
+                    if ($_POST){
+                        if(isset($_POST['run'])){
+                            echo $runner->run();
+                        }elseif(isset($_POST['stop'])){
+                            echo $runner->stop();
+                        }else{
+                            echo $runner->jump(); 
+                        }
+                    }
                 ?>
             </figure>
 
             <form action="" method="post">
-                <button> Run </button> 
-                <button> Stop </button>
-                <button> Jump </button>
+                <button name="run"> Run </button> 
+                <button name="stop"> Stop </button>
+                <button name="jump"> Jump </button>
             </form>
         </section>
     </main>
