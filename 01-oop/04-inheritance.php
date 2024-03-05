@@ -18,38 +18,46 @@
 
             h2 {
                 margin: 0;
-            }
-
-            form {
-                border: 2px solid #fff6;
-                background-color: #fff3;
-                border-radius: 8px;
+            } 
+            div.pks {
                 display: flex;
-                flex-direction: column;
-                padding: 10px;
-                width: 300px;
-
-                label {
+                gap: 1rem;
+                div.pk {
+                    background-repeat: no-repeat;
                     display: flex;
-                    justify-content: space-between;
-                    gap: 1.4rem;
+                    position: relative;
+                    flex-direction: column;
+                    height: 308px;
+                    overflow: hidden;
+                    padding: 4px;
+                    width: 141px;
+                    div.info {
+                        background-color: #0009;
+                        border-bottom: 2px solid #fffc;
+                        color: #fffa;
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        bottom: -52px;
+                        left: 2px;
+                        padding: 4px;
+                        transition: bottom 0.4s ease-in;
+                        width: 128px;
+                        span:nth-child(1) {
+                            background-color: #0009;
+                            color: #fff;
+                            text-align: center;
+                            margin-bottom: 4px;
+                        }
+                    }
                 }
-
-                output {
-                    font-size: 1.4rem;
+                div.pk:hover div.info {
+                      bottom: 0;
+                      cursor:  crosshair;
                 }
-
-                button {
-                    background-color: #994bde;
-                    border: 2px solid #fff6;
-                    border-radius: 8px;
-                    color: #fff9;
-                    cursor: pointer;
-                    font-size: 1rem;
-                    width: 300px;
-                    padding: 1rem;
+                div.pk:hover {
+                    cursor: grab;
                 }
-
             }
         }
     </style>
@@ -74,14 +82,16 @@
                     protected $name;
                     protected $type;
                     protected $healt;
+                    protected $img;
                     //protected $image;
 
 
                     // Methods
-                    public function __construct($name, $type, $healt) {
+                    public function __construct($name, $type, $healt, $img) {
                         $this->name  = $name;
                         $this->type  = $type;
                         $this->healt = $healt;
+                        $this->img   = $img;
                     }
                     public function attack() {
                         return "Attack";
@@ -89,31 +99,39 @@
                     public function defense() {
                         return "Defense";
                     }
-                    public function show() {
-                        return $this->name . " | " . $this->type . " | " . $this->healt;
+                    public function show() {                        
+                            return 
+                            "<div class='pk' style='background-image: url(". $this->img .")'>" . 
+                                "<div class='info'>" . 
+                                    "<span>" . $this->name  . "</span>" .
+                                    "<span> Type: " . $this->type  . "</span>" .
+                                    "<span> Healt: " . $this->healt . "</span>" .
+                                "</div>" . 
+                            "</div>";
+                        }
                     }
-                }
+                    
+                
 
                 class Evolve extends Pokemon {
-                    public function levelUp($name, $type, $healt) {
-                        $this->name  = $name;
-                        $this->type  = $type;
-                        $this->healt = $healt;
+                    public function levelUp($name, $type, $healt, $img) {
+                        parent::__construct($name, $type, $healt, $img);
+                        
                     }
                 }
-
-                $pk = new Evolve('Charmander', 'Fire', 150);
-                echo $pk->attack();
-                echo $pk->defense();
+                ?>
+                <h2>Evolve your Pokemon</h2>
+                <div class="pks">
+                <?php
+                $pk = new Evolve('Charmander', 'Fire', 150, 'images/charmander.png');
                 echo $pk->show();
-                $pk->levelUp('Charmeleon', 'Fire', 250);
+                $pk->levelUp('Charmeleon', 'Fire', 250, 'images/charmeleon.png');
                 echo $pk->show();
-                $pk->levelUp('Charizard', 'Fire-Fly', 450);
+                $pk->levelUp('Charizard', 'Fire-Fly', 450, 'images/charizard.png');
                 echo $pk->show();
-
-            ?>
-            <h2>Evolve your Pokemon</h2>
-                        
+                ?>
+                </div>       
+                           
             
             
         </section>
