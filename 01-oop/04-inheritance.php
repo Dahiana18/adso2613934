@@ -31,6 +31,8 @@
                     overflow: hidden;
                     padding: 4px;
                     width: 141px;
+                    
+            
                     div.info {
                         background-color: #0009;
                         border-bottom: 2px solid #fffc;
@@ -57,6 +59,9 @@
                 }
                 div.pk:hover {
                     cursor: grab;
+                    opacity: 0.5;
+                    filter: drop-shadow(5px 5px 5px #fff);
+                    transition: 1s;
                 }
             }
         }
