@@ -1,0 +1,39 @@
+/*V A R I A B L E*/
+
+:root {
+    --ff-heading: "Russo One", sans-serif;
+    --ff-body: "Poppins", sans-serif;
+    --color-first:#372948;
+    --color-second:#A98DEC;
+    --color-third:#AEE2FF;
+    --color-fourth:#E6FFFD;
+    --color-five:#FFFFFF;
+    --color-six:#000000;
+    
+  }
+/* ------------------- */ 
+/*G E N E R A L*/
+/* ------------------- */
+
+body {
+    background-color: var(--color-fourth);
+    /* background: linear-gradient(to bottom, #AEE2FF 40%, #372948 100%); */
+    font-family: var(--ff-body);
+    font-weight: 100;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    main {
+        background: url(../images/bg-main.png.png) no-repeat center;        
+        height: 800px;
+        overflow: hidden;
+        width: 400px;
+    }
+  }
+
+/* ------------------- */
+/*01- W E L C O M E*/
+/* ------------------- */
+
