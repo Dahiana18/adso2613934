@@ -1,4 +1,6 @@
-/*V A R I A B L E*/
+/* ------------------- */ 
+    /*V A R I A B L E*/
+/* ------------------- */ 
 
 :root {
     --ff-heading: "Russo One", sans-serif;
@@ -12,7 +14,7 @@
     
   }
 /* ------------------- */ 
-/*G E N E R A L*/
+    /*G E N E R A L*/
 /* ------------------- */
 
 body {
@@ -36,4 +38,41 @@ body {
 /* ------------------- */
 /*01- W E L C O M E*/
 /* ------------------- */
+
+main.welcome {
+    header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-block-start: 3rem;
+    }
+    section.slider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 4rem;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a:is(:link, :visited){
+            background: url(../images/btn.png.png) no-repeat center;
+            height: 60px;            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4rem;
+            transition: all 0.3s ease-in;
+            width: 300px;            
+        }
+        a:is(:hover){
+            background: url(../images/btn-hover.png.png) no-repeat center;
+            transform: scale(1.02) translateY(-5px);
+        }
+        a:is(:active){
+            background: url(../images/btn-active.png.png) no-repeat center;
+        }
+    }
+}
 
