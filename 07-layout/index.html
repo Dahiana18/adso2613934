@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/master.css">
-
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    
 </head>
 <body>
     <main class="welcome">
         <header>
         <img src="images/logo-welcome.sgv.svg" alt="Logo">
         </header>
-        <section class="slider">
+        <section class="slider owl-carousel owl-theme">
             <img src="images/slide01.png.png" alt="slide01">
+            <img src="images/slide01.png.png" alt="slide02">
+            <img src="images/slide01.png.png" alt="slide03">
         </section>
         <footer>
             <a href="" alt="Explore">
@@ -24,5 +28,24 @@
         </footer>
     </main>
     
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                }
+                
+                
+            }
+         })
+     })
+    </script>
 </body>
 </html>

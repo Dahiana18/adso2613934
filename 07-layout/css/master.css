@@ -48,9 +48,8 @@ main.welcome {
     }
     section.slider {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 4rem;
+        flex-direction: column;
+                
     }
     footer{
         display: flex;
