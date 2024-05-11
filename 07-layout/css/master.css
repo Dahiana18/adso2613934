@@ -43,13 +43,26 @@ body {
     align-items: center;
     min-height: 100vh;
 
-    main {
+    main { 
         background: url(../images/bg-main.png.png) no-repeat center;
         height: 800px;
         overflow: hidden;
         position: relative;
         width: 400px;
-
+        header {
+            margin-top: 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            a.btn-back:is(:link, :visited) {
+                transition: transform 0.2s ease-in;
+            }
+    
+            a.btn-back:is(:hover) {
+                transform: translateX(-4px);
+            }
+        }             
         header {
             position: relative;
             z-index: 3;
@@ -147,6 +160,31 @@ body {
                 transform: scale(1.02) translateY(-5px);
             }
 
+            a:is(:active) {
+                background: url(../images/btn-active.png.png) no-repeat center;
+            }
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            a:is(:link, :visited) {
+                background: url(../images/btn.png.png) no-repeat center;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 0.5rem;
+                transition: all 0.3s ease-in;
+                width: 300px;
+            }
+    
+            a:is(:hover) {
+                background: url(../images/btn-hover.png.png) no-repeat center;
+                transform: scale(1.02) translateY(-5px);
+            }
+    
             a:is(:active) {
                 background: url(../images/btn-active.png.png) no-repeat center;
             }
@@ -266,33 +304,7 @@ main.welcome {
                 }
             }
         }
-    }
-
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        a:is(:link, :visited) {
-            background: url(../images/btn.png.png) no-repeat center;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 0.5rem;
-            transition: all 0.3s ease-in;
-            width: 300px;
-        }
-
-        a:is(:hover) {
-            background: url(../images/btn-hover.png.png) no-repeat center;
-            transform: scale(1.02) translateY(-5px);
-        }
-
-        a:is(:active) {
-            background: url(../images/btn-active.png.png) no-repeat center;
-        }
-    }
+    } 
 
 
 }
@@ -305,21 +317,7 @@ main.catalogue {
     background: url(../images/btn-catalogue-main.png);
     scrollbar-width: none;
     overflow: scroll;
-
-    header {
-        margin-top: 1.4rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        a.btn-back:is(:link, :visited) {
-            transition: transform 0.2s ease-in;
-        }
-
-        a.btn-back:is(:hover) {
-            transform: translateX(-4px);
-        }
-    }
+   
     img.logo-top {
         width: 200px;
         height: auto;
@@ -467,5 +465,59 @@ main.catalogue {
         }
     }
 }
+
+
+/* ------------------- */
+/*V I E  G A M E*/
+/* ------------------- */
+main.view-game{
+    header{
+        margin-bottom: 0.5rem;
+        h1{
+            font-family: var(--ff-heading);
+            font-size: 26px;
+            color: var(--color-first);
+        }
+
+    }
+    section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            width: 296px;
+            div.row {
+                display: flex;
+                align-items: center;                
+                justify-content: space-between;
+                div.column {
+                    h4 {
+                        font-family: var(--ff-heading);
+                        color: var(--color-first);
+                        font-size: 20px;                        
+                    }
+                }
+                p {
+                    font-family: var(--ff-body);
+                    color: var(--color-five);
+                    font-size: 16px;
+                    line-height: 1.4rem;
+                    text-align: justify;
+                    &.price {
+                        color: var(--color-five);
+                        font-weight: 400;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
