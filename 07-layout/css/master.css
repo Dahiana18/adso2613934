@@ -167,8 +167,7 @@ body {
         footer {
             display: flex;
             justify-content: center;
-            align-items: center;
-    
+            align-items: center;    
             a:is(:link, :visited) {
                 background: url(../images/btn.png.png) no-repeat center;
                 height: 60px;
@@ -519,5 +518,114 @@ main.view-game{
     }
 }
 
+/* ------------------- */
+/*L O G I N & R E G I S T E R */
+/* ------------------- */
+
+main.login,
+main.register {
+    header {
+        
+        .btn-back {            
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+    section {
+
+        
+        form {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            div.form-group {               
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                gap: 0.6rem;
+                flex-direction: column;
+                width: 300px;
+
+                label {
+                    color: var(--color-first);
+                    font-weight: 600;
+                    display: flex;
+                    font-family: var(--ff-body);
+                    align-items: center;
+                    gap: 0.6rem;
+                    font-size: 20px;
+                }
+                input {
+                    border: none;
+                    background: url(../images/bg-input.png) no-repeat center;
+                    outline: none;
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: var(--color-six);
+                    text-indent: 1rem;
+                    height: 60px;
+                    width: 300px;
+                    &::placeholder {
+                        opacity: 0.6;
+                    }
+                }
+                img.ico-eye {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 72px;
+                    right: 10px;
+                    
+                }
+                button {
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
+                    background: url(../images/btn.png.png) no-repeat center;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 0.5rem;
+                    transition: all 0.3s ease-in;
+                    width: 300px;
+                }
+        
+                button:is(:hover) {
+                    background: url(../images/btn-hover.png.png) no-repeat center;
+                    transform: scale(1.02) translateY(-5px);
+                }
+        
+                button:is(:active) {
+                    background: url(../images/btn-active.png.png) no-repeat center;
+                }
+                a:is(:link, :visited) {
+                    color: var(--color-first);
+                    font-weight: 400;
+                    margin-top: 0.6rem;
+                    font-size: 16px;
+                }
+                .border {
+                    position: absolute;
+                    left: 63px;
+                    top: 0;
+                }
+                .mask {
+                    mask-image: url(../images/shape-photo.svg);
+                    mask-repeat: no-repeat;
+                    mask-position: center top;
+                    object-fit: contain;
+                    align-self: center;
+                    width: 200px;
+                    height: auto;
+                    
+                }
+            }
+
+        }
+    }
+}
 
 
