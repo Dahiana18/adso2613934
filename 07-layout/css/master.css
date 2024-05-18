@@ -164,6 +164,11 @@ body {
                 background: url(../images/btn-active.png.png) no-repeat center;
             }
         }
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 640px;
+        }
         footer {
             display: flex;
             justify-content: center;
@@ -575,7 +580,7 @@ main.register {
                 img.ico-eye {
                     cursor: pointer;
                     position: absolute;
-                    top: 72px;
+                    top: 76px;
                     right: 10px;
                     
                 }
@@ -608,6 +613,7 @@ main.register {
                     font-size: 16px;
                 }
                 .border {
+                    cursor: pointer;
                     position: absolute;
                     left: 63px;
                     top: 0;
@@ -616,11 +622,17 @@ main.register {
                     mask-image: url(../images/shape-photo.svg);
                     mask-repeat: no-repeat;
                     mask-position: center top;
-                    object-fit: contain;
+                    object-fit: cover;
                     align-self: center;
+                    position: relative;
                     width: 200px;
-                    height: auto;
-                    
+                    height: 200px;                    
+                }
+                #upload {
+                    cursor: pointer;
+                }
+                #photo {
+                    display: none;
                 }
             }
 
