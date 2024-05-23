@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameApp - Register</title>
+    <title>GameApp - Dashboard</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/master.css">        
 </head>
 <body>
-    <main class="register">
+    <main class="dashboard">
         <header>
             <a href="javascript:;" class="btn-back">
                 <img src="images/btn-back.svg" alt="Back">
             </a>
-            <img src="images/title-dashboard.svg" alt="login">
+            <img src="images/title-dashboard.svg" alt="Dashboard">
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                 <path
                       class="line top"
@@ -27,62 +27,76 @@
                       d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
             </svg>
         </header>
-        <nav class="nav">
-            <img src="images/title-menu.svg" alt="Menu" class="title-menu" >
+        <nav class="nav">            
+            <figure class="avatar" >
+                <img class="mask" src="images/photo.jpg" alt="Photo">
+                <img class="border" src="images/borde.svg" alt="border">
+            </figure>
+            <h2>Lucy Hale</h2>
+            <h4>Admin</h4>
             <menu>
-                <a href="login.html">
-                    <img src="images/ico-login.svg" alt="Login">
-                    Login
+                <a href="/07-layout/my-profile">
+                    <img src="images/ico-myprofile.svg" alt="My Profile">
+                    My Profile
                 </a>
-                <a href="register.html">
-                    <img src="images/ico-register.svg" alt="Register">
-                    Register
+                <a href="/07-layout/dashboard.html">
+                    <img src="images/ico-dashboard.svg" alt="Dashboard">
+                    Dashboard
                 </a>
-                <a href="catalogue.html">
-                    <img src="images/ico-catalogue.svg" alt="Catalogue">
-                    Catalogue
+                <a href="/07-layout/">
+                    <img src="images/ico-logout.svg" alt="Log Out">
+                    Log Out
                 </a>
             </menu>
         </nav>
         <section>
-            
+            <article class="module module-users">
+                <aside>
+                    <img src="images/ico-users.svg" alt="Users Module">
+                    <span class="count-rows">20 Rows</span>
+                </aside>
+                <aside>
+                    <h2>Users</h2>
+                    <a class="btn-more"  href="/07-layout/users/">                        
+                        view
+                    </a>
+                </aside>
+            </article>
+            <article class="module module-cats">
+                <aside>
+                    <img src="images/ico-cats.svg" alt="Categories Module">
+                    <span class="count-rows">6 Rows</span>
+                </aside>
+                <aside>
+                    <h2>Categories</h2>
+                    <a class="btn-more"  href="/07-layout/users/">                        
+                        view
+                    </a>
+                </aside>
+            </article>
+            <article class="module module-games">
+                <aside>
+                    <img src="images/ico-games.svg" alt="Games Module">
+                    <span class="count-rows">40 Rows</span>
+                </aside>
+                <aside>
+                    <h2>Games</h2>
+                    <a class="btn-more"  href="/07-layout/games/">
+                          view
+                    </a>
+                </aside>
+            </article>
         </section>
-    </main>
-    
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
+    </main>    
+    <script src="js/jquery-3.7.1.min.js"></script>    
     <script>
         $(document).ready(function () {
             
             $('header').on('click', '.btn-burger', function(){
             $(this).toggleClass('active')
             $('.nav').toggleClass('active')
-        })
-        //----------------------------
-        $togglePass = false
-        $('section').on('click', '.ico-eye', function(){
-            !$togglePass ? $(this).next().attr('type', 'text')
-                         : $(this).next().attr('type', 'password')
-            
-            !$togglePass ? $(this).attr('src', 'images/ico-eye-open.svg')
-                         : $(this).attr('src', 'images/ico-eye.svg')
-            
-            $togglePass = !$togglePass
-
-        })
-         //----------------------------
-         $('.border').click(function(e) {
-            $('#photo').click()
-         })
-         $('#photo').change(function(e){
-            e.preventDefault()
-            let reader = new FileReader()
-            reader.onload = function(evt) {
-                $('#upload').attr('src', event.target.result)
-            }
-            reader.readAsDataURL(this.files[0])
-         })
-         //----------------------------
+            })
+        //----------------------------       
         })
     </script>
 </body>
