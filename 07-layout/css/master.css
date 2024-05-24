@@ -839,6 +839,12 @@ main.my-profile {
             font-weight: 400;
             width: 170px;
             }
+        span.data-description {
+            background: url(../images/bg-description.png) no-repeat center;
+            height: 100;
+            width: 300;
+
+        }
         span.role {
             color: var(--color-first);            
             height: 40px;
