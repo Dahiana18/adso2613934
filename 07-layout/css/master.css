@@ -534,7 +534,8 @@ main.view-game{
 /* ------------------- */
 
 main.login,
-main.register {
+main.register,
+main.my-profile {
     header {
         
         .btn-back {            
@@ -693,6 +694,11 @@ main.users  {
             height: 30px;
             width: 150px;
         }
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 640px;
+        }
     }
 }
 
@@ -791,7 +797,7 @@ main.my-profile {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        
         gap: 0.6rem;
         figure.avatar {
             position: relative;
