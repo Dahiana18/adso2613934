@@ -76,12 +76,14 @@
                         <img src="/07-layout/images/ico-description.svg" alt="Password">
                         Description:
                     </label>                
-                    <input type="description" name="description" placeholder="write a description" >
+                    <div class="description">
+                        <input type="text" class="description" placeholder="write description"></input>
+                    </div>
                  </div>
                  
              </div>
              <div class="form-group">
-                <button>
+                <button id="redireccionar" >
                     <img src="/07-layout/images/content-btn-addu.svg" alt="login">
                 </button>                              
              </div>
@@ -124,6 +126,11 @@
          })
          //----------------------------
         })
+
+        //-------------------------------------
+        document.getElementById("redireccionar").addEventListener("click", function() {
+        window.location.href = "games.html";
+        });
     </script>
 </body>
 </html>
