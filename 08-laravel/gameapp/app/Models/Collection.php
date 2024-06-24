@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Collection extends Model
 {
     use HasFactory;
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -17,4 +17,16 @@ class Collection extends Model
         'game_id',
         'user_id'                
     ];
+
+    //Relationship: Collection belongs to User
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Game');
+    }
+    
+    //Relationship: Collection belongs to Category
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Game');
+    }
 }

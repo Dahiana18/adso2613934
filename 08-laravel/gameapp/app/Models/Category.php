@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-     /**
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -17,7 +18,12 @@ class Category extends Model
         'name',
         'image',
         'manufacturer',
-        'releasedate',
-        'description'        
+        'releadedate',
+        'description'
     ];
+
+    // Relationship: Category has many games
+    public function games() {
+        return $this->hasMany('App\Models\Games');
+    }
 }
