@@ -6,11 +6,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games/list', function(){
+Route::get('/games/', function(){
     $games = App\Models\Game::all();
-    //var_dump($games);
-    dd($games->toArray());
+    return view('listgames')->with('games', $games);
 });
+
+Route::get('catalogue', function(){
+    return view('catalogue');
+});
+
 
 Route::get('/game/show/{id}', function($id){
     $game = App\Models\Game::find($id);
@@ -40,3 +44,5 @@ Route::get('/viewusers', function(){
     }
     return $code . "</table>";
 });
+
+require __DIR__.'/auth.php';
