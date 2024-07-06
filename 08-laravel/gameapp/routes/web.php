@@ -11,6 +11,11 @@ Route::get('/games/', function(){
     return view('listgames')->with('games', $games);
 });
 
+Route::get('/dashboard', function(){
+    $games = App\Models\Game::all();
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('catalogue', function(){
     return view('catalogue');
 });
