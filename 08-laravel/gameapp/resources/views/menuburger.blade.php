@@ -21,7 +21,7 @@
 @auth
     <nav class="nav">
         <figure class="avatar">          
-            <img class="mask" src="images/photo.png" alt="Photo">
+            <img class="mask" src="{{asset ('images') . '/' . Auth::user()->photo }}" alt="Photo">
             <img class="border" src="images/borde2.svg" alt="border">
         </figure>
         <h2>{{ Auth::user()->fullname }}</h2>
