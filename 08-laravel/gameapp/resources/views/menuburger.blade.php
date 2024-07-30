@@ -22,17 +22,17 @@
     <nav class="nav">
         <figure class="avatar">          
             <img class="mask" src="{{asset ('images') . '/' . Auth::user()->photo }}" alt="Photo">
-            <img class="border" src="images/borde2.svg" alt="border">
+            <img class="border" src="{{ asset ('images/borde2.svg') }}" alt="border">
         </figure>
-        <h2>{{ Auth::user()->fullname }}</h2>
+        <h2>{{ Auth::user()->fullname }}</h2>        
         <h4>{{ Auth::user()->role }}</h4>
         <menu>
             <a href="{{url('myprofile')}}">
-                <img src="images/ico-login.svg" alt="">
+                <img src="{{ asset ('images/ico-login.svg') }}" alt="">
                 My Profile
             </a>
             <a href="{{url('dashboard')}}">
-                <img src="images/ico-dashboard.svg" alt="">
+                <img src="{{ asset ('images/ico-dashboard.svg') }}" alt="">
                 Dashboard
             </a>
             <a href="javascript:;" onclick="logout.submit();">

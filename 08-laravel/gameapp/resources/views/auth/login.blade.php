@@ -50,7 +50,7 @@
 @section('class', 'login')
 
 @section('content')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <header>
     <a href="javascript:;" class="btn-back">
         <img src="images/btn-back.svg" alt="Back">
@@ -141,3 +141,4 @@ $(document).ready(function () {
 </script>
 
 @endsection
+

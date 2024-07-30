@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'fullname' => $name . " " . fake()->lastName(),
             'gender' => $gender,
             'birthdate' => fake()->dateTimeBetween('1974-01-01', '2024-12-31'),
-            'photo' =>substr($photo, 7),
+            'photo' =>$photo,
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

@@ -3,7 +3,7 @@
 @section('class', 'register')
 
 @section('content')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <header>
     <a href="javascript:;" class="btn-back">
         <img src="images/btn-back.svg" alt="Back">
@@ -65,7 +65,13 @@
                 <img src="images/ico-gender.svg" alt="gender">
                 Gender:
             </label>
-            <input type="text" name="gender" placeholder="Female" value="{{old('gender')}}">
+            <select name="gender">
+                <option value="" disabled {{ old('gender') == '' ? 'selected' : '' }}>Select Gender</option>
+                <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
+            </select>
+
         </div>
         <div class="form-group">
             <label>
@@ -148,26 +154,24 @@
      //----------------------------
     })
 </script>
-@if ($errors->any())
-    @php $error = '' @endphp
-    @foreach ($errors->all() as $message)
+@if (count($errors->all()) > 0)
+@php $error = '' @endphp
+@foreach ($errors->all() as $message)
         @php $error .= '<li>' . $message . '</li>' @endphp
-    @endforeach
+@endforeach
 
-    <script>
+<script>
     $(document).ready(function(){
         Swal.fire({
-            position: 'top',
-            title: 'Ops !',
-            html: '<ul>{!! $error !!}</ul>',
-            icon: 'error',
+            position: "top",
+            title: "Ops !",
+            html: `@php echo $error @endphp`,
+            icon: "error",
             toast: true,
             showConfirmButton: false,
             timer: 5000
         })
-    })
-    </script>
+    });   
+</script>
 
-
-@endif
 @endsection

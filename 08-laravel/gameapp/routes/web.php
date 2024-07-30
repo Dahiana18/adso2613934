@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
+});
+
+Route::get('/myprofile', function(){
+    return view('myprofile');
 });
 
 Route::get('/games/', function(){

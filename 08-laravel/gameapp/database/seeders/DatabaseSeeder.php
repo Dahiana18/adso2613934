@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             GameSeeder::class
         ]);
-        User::factory(100)->create();
+        User::factory(50)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',

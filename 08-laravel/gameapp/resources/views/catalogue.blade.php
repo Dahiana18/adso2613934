@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
 <header>
             <a href="{{ url ('/') }}" class="btn-back">
                 <img src="images/btn-back.svg" alt="Back">

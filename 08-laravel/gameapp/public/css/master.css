@@ -539,8 +539,8 @@ main.my-profile {
     header {
         
         .btn-back {            
-            visibility: hidden;
-            pointer-events: none;
+            visibility: visible;
+            pointer-events: all;
         }
     }
     section {
@@ -917,6 +917,7 @@ main.my-profile {
 /* - - - - - - - - - - - - - - - - */
 /* U S E R S */
 /* - - - - - - - - - - - - - - - - */
+
 main.users {
     header {
         .btn-back {
@@ -1060,5 +1061,20 @@ main.users {
         }
     }
 }
+/* - - - - - - - - - - - - - - - - */
+/* A D D - S H O W - E D I T */
+/* - - - - - - - - - - - - - - - - */
 
-
+main.add
+main.show
+main.edit {
+    header {
+        .btn-back {
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+    h1{
+        font-size: 32px;
+    }
+}

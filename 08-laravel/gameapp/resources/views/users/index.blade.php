@@ -3,7 +3,7 @@
 @section('class', 'users')
 
 @section('content')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <header>
             <a href="{{ url ('dashboard') }}" class="btn-back">
                 <img src="../images/btn-back.svg" alt="Back">
@@ -24,11 +24,12 @@
 @include('menuburger')
         </nav>
         <section>
-        @foreach ($users as $user )
-            <div class="area">
+        <div class="area">
                 <a class="add" href="{{ url ('users/create') }}">
                     <img src="../images/content-btn-add.svg" alt="Add">
                 </a>
+        @foreach ($users as $user )
+            
                 <article class="record">
                         <figure class="avatar">
                             <img class="mask" src="{{ asset ('images') . '/' .$user-> photo}}" alt="Photo">
@@ -51,36 +52,42 @@
                         </figure>
                 </article>
                 
-        </div>
+        
         @endforeach
+        </div>
         </section>
         <div class="paginate">
-            {{ $users->links() }}
-            <a class="btn-prev" href="javascript:;">
+            <!-- {{ $users->links() }} -->
+            {{ $users->links('layouts.paginator')}}
+            <!-- <a class="btn-prev" href="javascript:;">
                 <img src="../images/btn-prev.svg" alt="prev">
             </a>
             <span>01/03</span>
             <a class="btn-prev" href="javascript:;">
                 <img src="../images/btn-next.svg" alt="prev">
-            </a>
+            </a> -->
         </div>
 @endsection
+
 @section('js')
-    <script>
+<script>
         $(document).ready(function() {
             $('header').on('click', '.btn-burger', function() {
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')
             })
 
-            // $togglePass = false
-            // $('section').on('click', '.ico-eye', function() {
-            //     !$togglePass ? $(this).next().attr('type', 'text') :
-            //         $(this).next().attr('type', 'password') !$togglePass ? $(this).attr('src',
-            //             'images/ico-eye-hidden.svg') :
-            //         $(this).attr('src', 'images/ico-eye.svg')
-            //     $togglePass = !$togglePass
-            // })
+            //----------
+        @if (session('message'))
+                Swal.fire({
+                    position:"top",
+                    title:'{{ session('message') }}',
+                    icon:"success",
+                    toast:true,
+                    timer:5000
+                })
+        @endif
+            //------------------    
         })
-    </script>
+</script>
 @endsection
