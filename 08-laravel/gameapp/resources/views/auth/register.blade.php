@@ -71,6 +71,12 @@
                 <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
                 <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
             </select>
+            {{-- //genero --}}
+            {{-- <select name="gender" id="">
+                <option value="">Select..</option>
+                <option value="Female" @if(old('gender', $user->gender)= 'female') selected @endif>Female</option>
+                <option value="Male" @if(old('gender', $user->gender)= 'male') selected @endif>Male</option>
+            </select> --}}
 
         </div>
         <div class="form-group">

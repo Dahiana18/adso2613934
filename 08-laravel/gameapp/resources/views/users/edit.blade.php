@@ -1,5 +1,5 @@
 @extends ('layouts.app')
-@section('tittle','GameApp- Create User')
+@section('tittle','GameApp- Edit User')
 @section('class','my-profile register')
 
 
@@ -9,7 +9,7 @@
     <a href="{{ url('users') }}" class="btn-back">
         <img src="{{ asset('images/btn-back.svg')}}" alt="Back">
     </a>
-    <h1>Add</h1>
+    <h1>Edit</h1>
     <svg class="btn-burger" viewBox="0 0 100 100" width="80">
         <path
             class="line top"
@@ -25,74 +25,67 @@
 @include('menuburger')
 
 <section class="scroll">
-    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('users/' .$user->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="form-group">
-            <img id="upload" class="mask" src="{{ asset ('images/bg-upload-photo.svg') }}" alt="photo">
+            <img id="upload" class="mask" src="{{ asset ('images') . '/' . $user->photo }}" alt="photo">
             <img class="border" src="{{ asset ('images/borde.svg') }}" alt="border">
             <input id="photo" type="file" name="photo" accept="image/*">
+            <input type="hidden" name="originphoto" value="{{ $user->photo}}">
+            <input type="hidden" name="id" value="{{ $user->id}}">
         </div>
         <div class="form-group">
             <label>
                 <img src="{{ asset ('images/ico-document.svg') }}" alt="document">
                 Document:
             </label>
-            <input type="text" name="document" placeholder="12323456" value="{{old('document')}}">
+            <input type="text" name="document" placeholder="12323456" value="{{ old('document' , $user->document)}}">
         </div>
         <div class="form-group">
             <label>
                 <img src="{{ asset ('images/ico-name.svg') }}" alt="document">
                 Fullname:
             </label>
-            <input type="text" name="fullname" placeholder="Rosa Perez" value="{{old('fullname')}}">
+            <input type="text" name="fullname" placeholder="Rosa Perez" value="{{old('fullname' , $user->fullname)}}">
         </div>
         <div class="form-group">
             <label>
                 <img src="{{ asset ('images/ico-gender.svg') }}" alt="gender">
                 Gender:
             </label>
-            <input type="text" name="gender" placeholder="Female" value="{{old('gender')}}">
+            <input type="text" name="gender" placeholder="Female" value="{{old('gender', $user->gender)}}">
         </div>
+         {{-- //genero --}}
+            {{-- <select name="gender" id="">
+                <option value="">Select..</option>
+                <option value="Female" @if(old('gender', $user->gender)= 'female') selected @endif>Female</option>
+                <option value="Male" @if(old('gender', $user->gender)= 'male') selected @endif>Male</option>
+            </select> --}}
         <div class="form-group">
             <label>
                 <img src="{{ asset ('images/ico-email-register.svg') }}" alt="Email">
                 Email:
             </label>
-            <input type="email" name="email" value="{{old('email')}}" placeholder="dirlortr@gmail.com">
+            <input type="email" name="email" value="{{old('email' ,$user->email)}}" placeholder="dirlortr@gmail.com">
         </div>
         <div class="form-group">
             <label>
                 <img src="{{ asset ('images/ico-phone.svg') }}" alt="phone">
                 Phone Number:
             </label>
-            <input type="text" value="{{old('phone')}}" name="phone" placeholder="320XXXXXXXX">
+            <input type="text" value="{{old('phone', $user->phone)}}" name="phone" placeholder="320XXXXXXXX">
         </div>
         <div class="form-group">
             <label>
                 <img src="{{ asset ('images/ico-birthday.svg') }}" alt="text">
                 Birth Date:
             </label>
-            <input type="text" value="{{old('birthdate')}}" name="birthdate" placeholder="1980-10-10">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{ asset ('images/ico-password-register.svg') }}" alt="password">
-                Password:
-            </label>
-            <img class="ico-eye" src="{{ asset ('images/ico-eye-open.svg') }}" alt=" ">
-            <input type="password" name="password" placeholder="dontmesswithmydog">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{ asset ('images/ico-password-register.svg') }}" alt="password">
-                Confirm Password:
-            </label>
-            <img class="ico-eye" src="{{ asset ('images/ico-eye-open.svg') }}" alt=" ">
-            <input type="password" name="password_confirmation" placeholder="dontmesswithmydog">
-        </div>
+            <input type="text" value="{{old('birthdate' ,$user->birthdate)}}" name="birthdate" placeholder="1980-10-10">
+        </div>        
         <div class="form-group">
             <button type="submit">
-                <img src="{{ asset ('images/content-btn-add.svg') }}" alt="add">
+                <img src="{{ asset ('images/content-btn-save.svg') }}" alt="Edit">
             </button>
         </div>
     </form>

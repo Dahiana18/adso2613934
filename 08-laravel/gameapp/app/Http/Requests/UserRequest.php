@@ -22,29 +22,40 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'document' => ['required', 'numeric', 'unique:'.User::class],
-            'fullname' => ['required', 'string'],
-            'gender' => ['required'],
-            'birthdate' => ['required', 'date'],
-            'photo' => ['required', 'image'],
-            'phone' => ['required'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'unique:'.User::class],
-            'password' => ['required', 'confirmed'],
-        ];
+        if ($this->method() == 'PUT') {
+            return [
+                'document' => 'required|numeric|unique:users,document,'. $this->id,
+                'fullname' => 'required|string',
+                'gender' => 'required',
+                'birthdate' => 'required|date',                
+                'phone' => 'required',
+                'email' => 'required|string|lowercase|email|unique:users,email,' .$this->id,                
+            ];
+        } else {
+            return [
+                'document' => ['required', 'numeric', 'unique:'.User::class],
+                'fullname' => ['required', 'string'],
+                'gender' => ['required'],
+                'birthdate' => ['required', 'date'],
+                'photo' => ['required', 'image'],
+                'phone' => ['required'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'unique:'.User::class],
+                'password' => ['required', 'confirmed'],
+            ];
     }
+}
+
     public function messages(): array
     {
         return [
-            'fullname.required' => 'The field FullName is requiered.'
+            'fullname.required' => 'The :attribute is required.'
         ];
     }
+        public function attributes(): array
+        {
+            return [
+                'fullname' => 'Full name'
+            ];
+        }
 
-    public function attributes(): array
-    {
-        return 
-        [
-            'fullname' => 'nombresito'
-        ];
-    }
 }
