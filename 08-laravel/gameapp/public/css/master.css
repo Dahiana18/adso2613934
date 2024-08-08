@@ -326,8 +326,7 @@ main.welcome {
 main.catalogue {
     background: url(../images/btn-catalogue-main.png);
     scrollbar-width: none;
-    overflow: scroll;
-   
+    overflow: scroll;   
     img.logo-top {
         width: 200px;
         height: auto;
@@ -347,8 +346,7 @@ main.catalogue {
             input {
                 border: none;
                 background: url(../images/ico-filter.png) no-repeat 250px center,
-                            url(../images/bg-input-filter.png) no-repeat center;
-                                                     
+                            url(../images/bg-input-filter.png) no-repeat center;                                                     
                 color: var(--color-five);
                 font-weight: 400px;
                 font-size: 20px;
@@ -933,7 +931,49 @@ main.users {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
+            div.options{
+                display: flex;                
+                margin-bottom: 0.6rem;
+                gap: 0.8rem;
+            }            
+        }
+            /* HTML: <div class="loader"></div> */
+        .loader {
+                margin-top: 40%;
+                width: 50px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background: 
+                radial-gradient(farthest-side, #372948 94%,#0000) top/8px 8px no-repeat,
+                conic-gradient(#0000 30%,#372948);
+                -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+                animation: l13 1s infinite linear;
+            } 
+            div#list{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                gap: 0.8rem;
+            }
+            input{
+                background: transparent;
+                color: var(--color-first);
+                border: 2px solid var(--color-first);
+                border-radius: 10px;                
+                outline: none;
+                padding: 0.4rem;               
+                transition: width 0.4s ease-in;
+                width: 74px;
+                &::placeholder {
+                    font-weight: 200;
+                    color: var(--color-first)                    
+                }
+                &:focus{
+                    width: 200px;
+                }
+            }
         }
         a.add:is(:link, :visited) {
             background: url(../images/bg-btn-add.png) no-repeat center;
@@ -1060,7 +1100,7 @@ main.users {
             transform: scale(1.1) translateX(4px);
         }
     }
-}
+
 /* - - - - - - - - - - - - - - - - */
 /* A D D - S H O W - E D I T */
 /* - - - - - - - - - - - - - - - - */
@@ -1077,4 +1117,7 @@ main.edit {
     h1{
         font-size: 32px;
     }
+}
+@keyframes l13{ 
+    100%{transform: rotate(1turn)}
 }

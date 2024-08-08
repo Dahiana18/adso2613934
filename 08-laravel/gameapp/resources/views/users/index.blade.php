@@ -22,7 +22,18 @@
         <div class="area">
             <a class="add" href="{{ url('users/create') }}">
                 <img src="{{ asset('images/content-btn-add.svg') }}" alt="Add">
-            </a>
+            </a>           
+            <div class="options">
+                <a href="{{ url ('export/users/pdf') }}">
+                    <img src="{{ asset('images/btn-export-pdf.svg')}}" alt="Pdf">
+                </a>
+                <a href="{{ url ('export/users/excel') }}">
+                    <img src="{{ asset('images/btn-export-excel.svg')}}" alt="Excel">                    
+                </a>
+                <input type="text" name="qsearch" id="qsearch" placeholder="Search">
+            </div>            
+            <div class="loader"></div>
+            <div id="list">
             @foreach ($users as $user)
                 <article class="record">
                     <figure class="avatar">
@@ -51,6 +62,7 @@
                 </article>
             @endforeach
         </div>
+        </div>
     </section>
     <div class="paginate">
         <!-- {{ $users->links() }} -->
@@ -68,6 +80,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
+            $('.loader').hide()
             $('header').on('click', '.btn-burger', function() {
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')
@@ -103,6 +116,29 @@
                 }
                 });
             })
+            //-------------------------------- bloque para el input de buscar
+            $('body').on('keyup', '#qsearch', function (e){
+                e.preventDefault()
+                $query = $(this).val()
+                $token = $('input[name=_token]').val()
+                $model = 'users'    
+                
+                $('.loader').show()
+                $('#list').hide()
+
+                setTimeout(() => {                 
+                    $.post($model + '/search',
+                        { q: $query, _token: $token },
+                    function (data) {
+                        $('#list').html(data)
+                        $('.loader').hide()
+                        $('#list').fadeIn('slow')
+                                                                        
+                    }                    
+                )
+            }, 1000);
+            })
+            //----------------------------------_
         })
     </script>
 @endsection
