@@ -18,12 +18,19 @@ class Category extends Model
         'name',
         'image',
         'manufacturer',
-        'releadedate',
+        'releasedate',
         'description'
     ];
 
     // Relationship: Category has many games
-    public function games() {
-        return $this->hasMany('App\Models\Games');
+    public function games(){
+        return $this->hasMany('App\Models\Game');
+    }
+
+    public function scopeNames($users, $query){
+        if(trim($query)){
+            $users->where('name', 'LIKE',"%$query%")
+                ->orWhere('manufacturer','LIKE',"%$query%");
+        }
     }
 }

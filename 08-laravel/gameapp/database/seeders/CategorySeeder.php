@@ -35,12 +35,12 @@ class CategorySeeder extends Seeder
            'description' => 'Lorem ipsum dolor sit amet',
        ]);
 
-       $cat = new Category;
-       $cat->name         = 'Xbox Series S';
-       $cat->manufacturer = 'Microsoft';
-       $cat->releasedate  = '2020-11-12';
-       $cat->description   = 'Lorem ipsum dolor sit amet';
-       $cat->save();
+       $category = new Category;
+       $category->name         = 'Xbox Series S';
+       $category->manufacturer = 'Microsoft';
+       $category->releasedate  = '2020-11-12';
+       $category->description   = 'Lorem ipsum dolor sit amet';
+       $category->save();
    
     }
 }

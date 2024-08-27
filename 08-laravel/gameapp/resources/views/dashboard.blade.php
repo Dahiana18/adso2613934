@@ -33,7 +33,7 @@
                 </aside>
                 <aside>
                     <h2>Categories</h2>
-                    <a class="btn-more"  href="/07-layout/categories/categories.html">                        
+                    <a href="{{ url ('categories') }}" class="btn-more">                        
                         view
                     </a>
                 </aside>
