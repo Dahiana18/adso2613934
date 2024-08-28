@@ -29,9 +29,9 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <img id="upload" class="mask" src="{{ asset ('images') . '/' . $category->image }}" alt="photo">
+            <img id="upload" class="mask" src="{{ asset ('images') . '/' . $category->image }}" alt="image">
             <img class="border" src="{{ asset ('images/borde.svg') }}" alt="border">
-            <input id="photo" type="file" name="photo" accept="image/*">
+            <input id="photo" type="file" name="image" accept="image/*">
             <input type="hidden" name="originphoto" value="{{ $category->image}}">
             <input type="hidden" name="id" value="{{ $category->id}}">
         </div>

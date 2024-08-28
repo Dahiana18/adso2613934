@@ -28,9 +28,9 @@
     <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <img id="upload" class="mask" src="{{ asset ('images/bg-upload-photo.svg') }}" alt="photo">
+            <img id="upload" class="mask" src="{{ asset ('images/bg-upload-photo.svg') }}" alt="image">
             <img class="border" src="{{ asset ('images/borde.svg') }}" alt="border">
-            <input id="photo" type="file" name="photo" accept="image/*">
+            <input id="photo" type="file" name="image" accept="image/*">
         </div>
         <div class="form-group">
             <label>

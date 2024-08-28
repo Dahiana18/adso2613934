@@ -18,40 +18,29 @@
     @include('menuburger')
     <section>
     <figure class="avatar">          
-            <img class="mask" src="{{asset ('images') . '/' . $category->photo }}" alt="Photo">
+            <img class="mask" src="{{asset ('images') . '/' . $category->image }}" alt="Photo">
             <img class="border" src="{{ asset ('images/borde2.svg') }}" alt="border">
         </figure>
-        <h2>{{ $category->name }}</h2>
-        <span class="email"><b>{{ $category->manufacturer }}</b></span>
+        <h2>{{ $category->name }}</h2>       
         <span class="role">
-        <img src="{{ asset ('images/ico-role.svg') }}" alt="role">
+        <img src="{{ asset ('images/ico-show-category.svg') }}" alt="role">
         <h4>{{ $category->manufacturer }}</h4>
         </span>
         <div class="grid">
                 <span class="data data-id">
-                <img src="{{ asset ('images/ico-data-id.svg')}}" alt="Id">
+                <img src="{{ asset ('images/ico-show-category.svg')}}" alt="Id">
                 <b>{{ $category->name }}</b>
-                </span>
-                <span class="data data-address">
-                    <img src="{{ asset ('images/ico-data-address.svg') }}" alt="Address">
-                    <b>N/A</b>
-                </span>
+                </span>                
                 <span class="data data-phone-number">
-                    <img src="{{ asset ('images/ico-data-phone-number.svg') }}" alt="Phone Number">
+                    <img src="{{ asset ('images/ico-show-description.svg') }}" alt="description">
                     <b>{{ $category->description }}</b>
                 </span>
                 <span class="data data-birth-date">
                     <img src="{{asset ('images/data-birth-date.svg') }}" alt="Birth Date">
                     <b>{{ $category->releasedate }}</b>
                 </span>
-                <span class="data data-gender">
-                    <img src="{{asset ('images/ico-data-gender.svg')}}" alt="Gender">
-                    <b>{{ $category->gender }}</b>
-                </span>
-                <span class="data data-status">
-                    <img src="{{ asset ('images/ico-data-status.svg')}}" alt="Status">
-                    <b>Active</b>
-                </span>
+                
+                
             </div>
     </section>
 @endsection

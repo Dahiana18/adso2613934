@@ -25,7 +25,7 @@ class CategoryRequest extends FormRequest
     {
         if ($this->method() == 'PUT') {
             return [
-                'name' => 'required|unique:categories,name' .$this->id,
+                'name' => 'required|unique:categories,name,' . $this->id,
                 'manufacturer' => 'required|string',                
                 'releasedate' => 'required|date',       
                 'description' => 'required',                
@@ -33,7 +33,7 @@ class CategoryRequest extends FormRequest
         } else {
             return [
                 'name' => 'required|unique:categories',
-                'image'=>'nullable',
+                'image'=>'required|image',
                 'manufacturer' => 'required|string',                
                 'releasedate' => 'required|date',       
                 'description' => 'required', 

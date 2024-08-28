@@ -31,7 +31,7 @@
             @foreach ($categories as $category)
                 <article class="record">
                     <figure class="avatar">
-                        <img class="mask" src="{{ asset('images') . '/' . $category->photo }}" alt="Photo">
+                        <img class="mask" src="{{ asset('images') . '/' . $category->image}}" alt="Photo">
                         <img class="border" src="{{ asset('images/shape-border-small.svg') }}" alt="Border">
                     </figure>
                     <aside>
