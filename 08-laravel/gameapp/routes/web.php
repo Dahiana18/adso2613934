@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,7 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); */
     Route::resources([
         'users' => UserController::class,
-        'categories' => CategoryController::class
+        'categories' => CategoryController::class,
+        'games' => GameController::class
     ]);
 });
 
@@ -74,9 +76,12 @@ Route::get('/viewusers', function(){
 //Buscar
 Route::post('users/search', [UserController::class, 'search']);
 Route::post('categories/search', [CategoryController::class, 'search']);
+Route::post('games/search', [GameController::class, 'search']);
 
 //Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
+Route::get('export/games/pdf', [GameController::class, 'pdf']);
+Route::get('export/games/excel', [GameController::class, 'excel']);
 
 require __DIR__.'/auth.php';
