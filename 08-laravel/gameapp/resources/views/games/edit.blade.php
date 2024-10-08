@@ -57,7 +57,7 @@
             <select name="category_id">
                 <option value="">Select...</option>
                 @foreach ($cats as $cat)
-                <option value="{{ $cat->id }}" @if(old('category_id') == $cat->id) selected @endif>{{ $cat->name }}</option>
+                <option value="{{ $cat->id }}" @if(old('category_id', $game->category_id) == $cat->id) selected @endif>{{ $cat->name }}</option>
                 @endforeach
             </select>
         </div>
