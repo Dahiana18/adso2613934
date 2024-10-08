@@ -93,11 +93,11 @@
             //------------------  
 
             $('figure').on('click', '.delete', function() {
-                $fullname = $(this).attr('data-fullname')
+                $name = $(this).attr('data-fullname')
 
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "Desesa eliminar a: " + $fullname,
+                    text: "Desesa eliminar a: " + $name,
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#240b34",

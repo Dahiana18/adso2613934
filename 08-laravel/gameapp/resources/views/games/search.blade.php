@@ -1,6 +1,6 @@
 @forelse ($games as $game)
 <article class="record">
-    figure class="avatar">
+    <figure class="avatar">
         <img class="mask" src="{{ asset('images') . '/' . $game->image }}" alt="image">
         <img class="border" src="{{ asset('images/shape-border-small.svg') }}" alt="Border">
     </figure>

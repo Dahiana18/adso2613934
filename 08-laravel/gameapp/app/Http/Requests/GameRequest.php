@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Game;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GameRequest extends FormRequest
 {
-
-/**
+    /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
@@ -23,39 +21,29 @@ class GameRequest extends FormRequest
      */
     public function rules(): array
     {
-        if ($this->method() == 'PUT') {
+        if ($this->method() === 'PUT') {
             return [
-                'title' => 'required|unique:games,title,' . $this->id,
+                'title' => 'required|string|unique:games,title,'. $this->id,
                 'developer' => 'required|string',
-                'releasedate' => 'required|date',                 
-                'price' => 'required|string', 
-                'genre' => 'required|string',                    
-                'description' => 'required',                
+                'releasedate' => 'required|date',
+                'category_id' => 'required',
+                'price' => 'required|decimal:2',
+                'genre' => 'required',
+                'slider' => 'required',
+                'description' => 'required',
             ];
         } else {
             return [
-                'title' => 'required|unique:games', 
+                'title' => 'required|string|unique:games',
+                'image' => 'required|image',
                 'developer' => 'required|string',
-                'releasedate' => 'required|date',                
-                'price' => 'required|string', 
-                'genre' => 'required|string',                    
-                'description' => 'required',  
-                'image'=>'required|image',
-            ];
-    }
-}
-
-    public function messages(): array
-    {
-        return [
-            'name.required' => 'The :attribute is required.'
-        ];
-    }
-        public function attributes(): array
-        {
-            return [
-                'name' => 'name'
+                'releasedate' => 'required|date',
+                'category_id' => 'required',
+                'price' => 'required|decimal:2',
+                'genre' => 'required',
+                'slider' => 'required',
+                'description' => 'required',
             ];
         }
+    }
 }
-

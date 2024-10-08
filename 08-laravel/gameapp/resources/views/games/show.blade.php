@@ -40,18 +40,19 @@
                     <img src="{{asset ('images/data-birth-date.svg') }}" alt="Birth Date">
                     <b>{{ $game->releasedate }}</b>
                 </span>
+                <span class="data data-slider">
+                    <img src="{{ asset ('images/ico-data-status.svg')}}" alt="Status">
+                    @if ($game->slider = 1)
+                        active
+                    @else
+                        Inactive
+                    @endif
+                </span>
                 <span class="data data-gender">
                     <img src="{{asset ('images/ico-data-gender.svg')}}" alt="Gender">
                     <b>{{ $game->description }}</b>
-                </span>
-                <span class="data data-status">
-                    <img src="{{ asset ('images/ico-data-status.svg')}}" alt="Status">
-                    <b>{{ $game->category_id }}</b>
-                </span>
-                <span class="data data-phone-number">
-                    <img src="{{ asset ('images/ico-data-phone-number.svg') }}" alt="Phone Number">
-                    <b>{{ $game->user_id }}</b>
-                </span>
+                </span>                
+                
             </div>
     </section>
 @endsection

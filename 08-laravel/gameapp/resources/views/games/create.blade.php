@@ -1,5 +1,5 @@
 @extends ('layouts.app')
-@section('tittle','GameApp- Create User')
+@section('tittle','GameApp- Create Game')
 @section('class','my-profile register')
 
 
@@ -25,7 +25,7 @@
 @include('menuburger')
 
 <section class="scroll">
-    <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data">        
         @csrf
         <div class="form-group">
             <img id="upload" class="mask" src="{{ asset ('images/bg-upload-photo.svg') }}" alt="image">
@@ -34,10 +34,10 @@
         </div>
         <div class="form-group">
             <label>
-                <img src="{{ asset ('images/ico-document.svg') }}" alt="document">
+                <img src="{{ asset ('images/ico-name-categories.svg') }}" alt="document">
                 Title:
             </label>
-            <input type="text" name="title" placeholder="imperial age" value="{{old('title')}}">
+            <input type="text" name="title" placeholder="The Legend of Zelda" value="{{old('title')}}">
         </div>
         <div class="form-group">
             <label>
@@ -48,10 +48,22 @@
         </div>
         <div class="form-group">
             <label>
+                <img src="{{ asset ('images/ico-category2.svg') }}" alt="document">
+                Category:
+            </label>
+            <select name="category_id">
+                <option value="">Select...</option>
+                @foreach ($cats as $cat)
+                <option value="{{ $cat->id }}" @if(old('category_id') == $cat->id) selected @endif>{{ $cat->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
                 <img src="{{ asset ('images/ico-gender.svg') }}" alt="releasedate">
                 releasedate:
             </label>
-            <input type="text" name="releasedate" placeholder="14-09-2024" value="{{old('releasedate')}}">
+            <input type="date" name="releasedate" placeholder="14-09-2024" value="{{old('releasedate')}}">
         </div>
         <div class="form-group">
             <label>
@@ -66,14 +78,23 @@
                 Genre:
             </label>
             <input type="text" value="{{old('genre')}}" name="genre" placeholder="genre">
-        </div>        
+        </div>                       
         <div class="form-group">
             <label>
-                <img src="{{ asset ('images/ico-birthday.svg') }}" alt="text">
+                <img src="{{ asset ('images/ico-description.svg') }}" alt="text">
                 Description:
             </label>
             <input type="text" value="{{old('description')}}" name="description" placeholder="lorem 5">
-        </div>        
+        </div>        <div class="form-group">
+            <label>
+                Slider:
+            </label>
+            <select name="slider">
+                <option value="">Select...</option>
+                <option value="0" @if (old('slider') == 1) selected @endif>Inactive</option>
+                <option value="1" @if (old('slider') == 0) selected @endif>Active</option>
+            </select>
+        </div>
         <div class="form-group">
             <button type="submit">
                 <img src="{{ asset ('images/content-btn-add.svg') }}" alt="add">

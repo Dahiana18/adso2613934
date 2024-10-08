@@ -42,7 +42,7 @@
                     </figure>
                     <aside>
                         <h3>{{ $game->title }}</h3>
-                        <h4>{{ $game->developer }}</h4>
+                        <h4>{{ $game->category->name }}</h4>
                     </aside>
                     <figure class="actions">
                         <a href="{{ url('games/' . $game->id) }}">
@@ -92,11 +92,11 @@
             //------------------  
 
             $('figure').on('click', '.delete', function() {
-                $fullname = $(this).attr('data-fullname')
+                $title = $(this).attr('data-fullname')
 
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "Desesa eliminar a: " + $fullname,
+                    text: "Desesa eliminar a: " + $title,
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#240b34",
@@ -114,7 +114,7 @@
                 e.preventDefault()
                 $query = $(this).val()
                 $token = $('input[name=_token]').val()
-                $model = 'users'    
+                $model = 'games'    
                 
                 $('.loader').show()
                 $('#list').hide()

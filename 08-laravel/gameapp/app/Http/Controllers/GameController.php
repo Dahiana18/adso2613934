@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Exports\GameExport;
 use App\Models\Game;
+use App\Models\Category;
 use App\Http\Requests\GameRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class GameController extends Controller
@@ -15,7 +17,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
+        // $games = Game::all();
         $games = Game::paginate(20);
         return view('games.index')->with('games', $games);
     }
@@ -25,42 +27,40 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('games.create');
+        $cats = Category::all();
+        return view('games.create')
+            ->with('cats', $cats);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(GameRequest $request)
-    {
-        // dd($request->all());
+{
+    // dd($request->all());
 
-        //Upload file
-        if ($request->hasFile('image')) {
-            $image = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $image);
-        }
-        //new Game    
-        $game = new Game;
-        $game->title = $request->title;
-        $game->image = $image;
-        $game->developer = $request->developer;
-        $game->releasedate = $request->releasedate;
-        $game->category_id = $request->category_id;
-        $game->user_id = $request->user_id;
-        $game->price = $request->price;
-        $game->genre = $request->genre;        
-        $game->description = $request->description;
+    //Upload file
+    if ($request->hasFile('image')) {
+        $image = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $image);
+    }
+    //new Game
+    $game = new Game();
+    $game->title        =$request->title;
+    $game->image        =$image;
+    $game->developer    =$request->developer;
+    $game->releasedate  =$request->releasedate;
+    $game->category_id  =$request->category_id;
+    $game->user_id      =Auth::user()->id;
+    $game->price        =$request->price;
+    $game->genre        =$request->genre;
+    $game->slider       =$request->slider;
+    $game->description  =$request->description;
 
-        if ($game->save()) {
-            return redirect('games')
-                ->with('message', 'The game: ' . $game->title . ' was successfully added!');
-        }
+    if ($game->save()) {
+        return redirect('games')
+            ->with('message', 'The game: ' . $game->title . ' was successfully added!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+}
     public function show(Game $game)
     {
         // dd($user->toArray());
@@ -72,7 +72,10 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        return view('games.edit')->with('game', $game);
+        $cats = Category::all();
+        return view('games.edit')
+                ->with('game', $game)
+                ->with('cats', $cats);
     }
 
     /**
@@ -92,10 +95,10 @@ class GameController extends Controller
         $game->image = $image;
         $game->developer = $request->developer;
         $game->releasedate = $request->releasedate;
-        $game->category_id = $request->category_id;
-        $game->user_id = $request->user_id;
+        $game->category_id = $request->category_id;        
         $game->price = $request->price;
-        $game->genre = $request->genre;        
+        $game->genre = $request->genre;
+        $game->slider = $request->slider;         
         $game->description = $request->description;
 
         // Guardar juego y redirigir con mensaje de éxito
