@@ -1,12 +1,12 @@
 @forelse ($games as $game)
 <article class="record">
     <figure class="avatar">
-        <img class="mask" src="{{ asset('images') . '/' . $game->image }}" alt="image">
+        <img class="mask" src="{{ asset('images') . '/' . $game->image }}" alt="Photo">
         <img class="border" src="{{ asset('images/shape-border-small.svg') }}" alt="Border">
     </figure>
     <aside>
         <h3>{{ $game->title }}</h3>
-        <h4>{{ $game->developer }}</h4>
+        <h4>{{ $game->category->name }}</h4>
     </aside>
     <figure class="actions">
         <a href="{{ url('games/' . $game->id) }}">

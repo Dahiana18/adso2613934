@@ -40,6 +40,10 @@
                     <img src="{{asset ('images/data-birth-date.svg') }}" alt="Birth Date">
                     <b>{{ $game->releasedate }}</b>
                 </span>
+                <span class="data data-birth-date">
+                    <img src="{{asset ('images/data-birth-date.svg') }}" alt="Birth Date">
+                    <b>{{ $game->price }}</b>
+                </span>
                 <span class="data data-slider">
                     <img src="{{ asset ('images/ico-data-status.svg')}}" alt="Status">
                     @if ($game->slider = 1)

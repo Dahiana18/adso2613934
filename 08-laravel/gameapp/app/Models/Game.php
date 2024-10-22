@@ -41,4 +41,12 @@ class Game extends Model
     public function collection() {
         return $this->belongsTo('App\Models\Collection');
     }
+
+     //Scape
+    public function scopeNames($games, $q) {
+        if (trim($q)){
+            $games->where('title', 'LIKE' , "%$q%")
+            ->orWhere('developer', 'LIKE' , "%$q%");
+        }
+    }
 }

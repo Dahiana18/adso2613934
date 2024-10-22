@@ -52,7 +52,7 @@
             <td>{{ $game->genre}}</td>
             <td>{{ $game->slider}}</td>
             <td>{{ $game->description}}</td>
-            <td>{{ $game->category_id}}</td>
+            <td>{{ $game->category->name}}</td>
             <td>{{ $game->user_id}}</td>
             <td><img src="{{ public_path().'/images/'.$game->image}}" width="40px"></td>
         </tr>            
