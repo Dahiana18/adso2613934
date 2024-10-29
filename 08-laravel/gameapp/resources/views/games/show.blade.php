@@ -29,7 +29,7 @@
         </span>
         <div class="grid">
                 <span class="data data-id">
-                <img src="{{ asset ('images/ico-data-id.svg')}}" alt="Id">
+                <img src="{{ asset ('images/ico-show-category.svg')}}" alt="Id">
                 <b>{{ $game->title }}</b>
                 </span>
                 <span class="data data-address">

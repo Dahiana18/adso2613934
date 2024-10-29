@@ -81,23 +81,26 @@
                 Genre:
             </label>
             <input type="text" value="{{old('genre', $game->genre)}}" name="genre" placeholder="genre">
-        </div>                       
+        </div>                   
         <div class="form-group">
-            <label>
-                <img src="{{ asset ('images/ico-description.svg') }}" alt="text">
-                Description:
-            </label>
-            <input type="text" value="{{old('description', $game->description)}}" name="description" placeholder="lorem 5">
-        </div>        <div class="form-group">
             <label>
                 Slider:
             </label>
             <select name="slider">
                 <option value="">Select...</option>
-                <option value="0" @if (old('slider') == 1) selected @endif>Inactive</option>
-                <option value="1" @if (old('slider') == 0) selected @endif>Active</option>
+                <option value="0" @if (old('slider') == 0) selected @endif>Inactive</option>
+                <option value="1" @if (old('slider') == 1) selected @endif>Active</option>
             </select>
         </div>
+        <div class="form-group">
+            <label>
+                <img src="{{ asset ('images/ico-description.svg') }}" alt="text">
+                Description:
+            </label>
+            <textarea rows="10" value="{{old('description', $game->description)}}" name="description" placeholder="lorem 5">
+
+            </textarea>            
+        </div>  
         <div class="form-group">
             <button type="submit">
                 <img src="{{ asset ('images/content-btn-save.svg') }}" alt="Edit">

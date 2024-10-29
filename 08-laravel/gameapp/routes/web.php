@@ -6,8 +6,9 @@ use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-
+    $sliders = App\Models\Game::where('slider', 1)->get();
+    // dd($sliders->toArray());
+    return view('welcome')->with('sliders', $sliders);
 });
 
 Route::get('/myprofile', function(){
@@ -83,5 +84,8 @@ Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
 Route::get('export/games/pdf', [GameController::class, 'pdf']);
 Route::get('export/games/excel', [GameController::class, 'excel']);
+
+//import
+Route::post('import/users', [UserController::class, 'import']);
 
 require __DIR__.'/auth.php';

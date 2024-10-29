@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UserExport;
+use App\Imports\UserImport;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
@@ -126,5 +127,11 @@ class UserController extends Controller
     }
     public function excel(){
         return \Excel::download(new UserExport, 'allusers.xlsx');
+    }
+
+    public function import(Request $request){
+        $file = $request->file('file');
+        \Excel::import(new UserImport, $file);
+        return redirect()->back()->with('message', 'Users imported successfully');
     }
 }

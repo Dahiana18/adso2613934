@@ -8,9 +8,10 @@
             <img src="{{ asset ('images/logo-welcome.sgv.svg') }}" alt="Logo">
 </header>
 <section class="owl-carousel owl-theme">
-            <img src="{{ asset('images/slide01.png.png') }} " alt="slide01">
-            <img src="{{ asset('images/slide02.png') }}" alt="slide02">
-            <img src="{{ asset('images/zelda.png') }}" alt="slide03">
+    @foreach ($sliders as $slider)
+        <img src="{{ asset('images/' .$slider->image) }} " alt="{{ $slider->title }}">
+    @endforeach
+            
 </section>
 <footer>
         <a href="{{ url('catalogue') }}" alt="Explore">

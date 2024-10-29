@@ -24,9 +24,16 @@
                 <img src="{{ asset('images/content-btn-add.svg') }}" alt="Add">
             </a>           
             <div class="options">
-                <a href="{{ url ('export/users/pdf') }}">
+            <form action="{{ url('import/users') }}" method="POST" enctype="multipart/form-data">            
+                @csrf
+                <input type="file" name="file" id="file" class="hidden" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                <button type="button" class="btn-import">
+                    <img src="{{ asset('images/btn-import-excel.svg')}}" alt="">
+                </button>
+            </form>
+            <a href="{{ url ('export/users/pdf') }}">
                     <img src="{{ asset('images/btn-export-pdf.svg')}}" alt="Pdf">
-                </a>
+            </a>
                 <a href="{{ url ('export/users/excel') }}">
                     <img src="{{ asset('images/btn-export-excel.svg')}}" alt="Excel">                    
                 </a>
@@ -85,7 +92,12 @@
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')
             })
-
+            $('.btn-import').click(function(e) {
+                $('#file').click()
+            })
+            $('#file').change(function(event) {
+                $(this).parent().submit()
+            })
             //----------
             @if (session('message'))
                 Swal.fire({

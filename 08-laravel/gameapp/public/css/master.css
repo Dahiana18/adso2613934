@@ -568,7 +568,7 @@ main.my-profile {
                     gap: 0.6rem;
                     font-size: 20px;
                 }
-                input {
+                input, select {
                     border: none;
                     background: url(../images/bg-input.png) no-repeat center;
                     outline: none;
@@ -937,6 +937,15 @@ main.users {
                 margin-bottom: 0.6rem;
                 gap: 0.8rem;
             }            
+        }
+        .hidden {
+            display: none;
+        }
+        .btn-import {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
         }
             /* HTML: <div class="loader"></div> */
         .loader {

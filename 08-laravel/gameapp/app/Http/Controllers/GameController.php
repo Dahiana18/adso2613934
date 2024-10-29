@@ -90,7 +90,7 @@ class GameController extends Controller
         } else {
             $image = $request->originphoto;
         }
-        // Actualización de los campos de la categoría
+        // Actualización de los campos del juego
         $game->title = $request->title;
         $game->image = $image;
         $game->developer = $request->developer;
