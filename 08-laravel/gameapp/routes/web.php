@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\http\Request;
 
 Route::get('/', function () {
     $sliders = App\Models\Game::where('slider', 1)->get();
@@ -41,7 +42,42 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('catalogue', function(){
-    return view('catalogue');
+    $categories = App\Models\Category::all(); 
+    $games = App\Models\Game::all();  
+    return view('catalogue')->with('categories' , $categories)->with('games', $games);
+});
+
+Route::get('catalogue/{id}', function(){
+    $game =  App\Models\Game::find(request()->id);
+    //dd($game->toArray());
+    return view('view-game')->with('game', $game);
+});
+
+
+Route::get('catalogue/add{id}', function(){
+    $game =  App\Models\Game::find(request()->id);
+    dd($game->toArray());   
+});
+
+
+Route::post('gamesbycat', function(Request $request) {
+    if ($request->fcat == 'All') {
+        // All Categories
+        $categories = App\Models\Category::all();
+        $games      = App\Models\Game::all();
+        return view('gamesbycat')->with('categories', $categories)->with('games', $games);
+    } else {
+        // By Category
+        $idcat    = App\Models\Category::where('name', $request->fcat)->first();
+        $category = App\Models\Category::where('id', $idcat->id)->first();
+        $games    = App\Models\Game::where('category_id', $idcat->id)->get();
+        return view('gamesbycat')->with('category', $category)->with('games', $games);
+    }
+});
+
+Route::get('/games/list', function() {
+    $games = App\Models\Game::all();
+    dd($games->toArray());
 });
 
 

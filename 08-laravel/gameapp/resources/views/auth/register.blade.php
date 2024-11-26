@@ -166,6 +166,7 @@
         @php $error .= '<li>' . $message . '</li>' @endphp
 @endforeach
 
+
 <script>
     $(document).ready(function(){
         Swal.fire({
@@ -179,5 +180,5 @@
         })
     });   
 </script>
-
+@endif
 @endsection

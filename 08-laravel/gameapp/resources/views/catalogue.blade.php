@@ -21,144 +21,106 @@
                     d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
             </svg>
         </header>
-        <nav class="nav">
-            <img src="images/title-menu.svg" alt="Menu" class="title-menu" >
-            <menu>
-                <a href="{{ url('login') }} ">
-                    <img src="images/ico-login.svg" alt="Login">
-                    Login
-                </a>
-                <a href="{{ url('register') }}">
-                    <img src="images/ico-register.svg" alt="Register">
-                    Register
-                </a>
-                <a href="{{ url('catalogue') }}">
-                    <img src="images/ico-catalogue.svg" alt="Catalogue">
-                    Catalogue
-                </a>
-            </menu>
-        </nav>
+        @include('menuburger')        
+
         <section class="scroll">
             <form action="" method="post">
-                <input type="text" placeholder="Filter" maxlength="18" >
+                @csrf
+                <input type="text" id="fcat" list="lcat" placeholder="Filter" maxlength="18">
+                <datalist id="lcat">
+                    <option value="All"></option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->name }}"></option>
+                    @endforeach
+                </datalist>
             </form>
-            <article>
-                <h2>
-                    <img src="images/ico-category.svg" alt="Category">
-                    Category 01
-                </h2>
-                <div class="owl-carousel owl-theme">
-                    <figure>
-                        <img src="images/zelda.png" alt="" class="slide">
-                        <figcaption>Zelda</figcaption>                        
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/slide-c1-02.png" alt="" class="slide">
-                        <figcaption>Football Penalty</figcaption> 
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/slide02.png" alt="" class="slide">
-                        <figcaption>Mario Kart</figcaption> 
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                </div>
-            </article>       
 
-    
-            <article>
-                <h2>
-                    <img src="images/ico-category.svg" alt="Category">
-                    Category 02
-                </h2>
-                <div class="owl-carousel owl-theme">
-                    <figure>
-                        <img src="images/slide-c1-04.png" alt="" class="slide">
-                        <figcaption>Tom Rider</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/god-of-war.png" alt="" class="slide">
-                        <figcaption>God of War</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/resident.png" alt="" class="slide">
-                        <figcaption>Resident Evil</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                </div>
-            </article>
-
-            <article>
-                <h2>
-                    <img src="images/ico-category.svg" alt="Category">
-                    Category 03
-                </h2>
-                <div class="owl-carousel owl-theme">
-                    <figure>
-                        <img src="images/age-of-empires.png" alt="" class="slide">
-                        <figcaption>Age of Empires</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/world.png" alt="" class="slide">
-                        <figcaption>World of Warcraft</figcaption>
-                        <a href="view-game.html" class="btn-more">                           
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/diablo.png" alt="" class="slide">
-                        <figcaption>Diablo</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                </div>
-            </article>         
-
-
-
+            <div class="loader hidden"></div>               
+            <div id="content">
+                @foreach ($categories as $category)
+                    @if (count($category->games) > 0)
+                    <article>
+                        <h2>
+                            <img src="images/ico-category.svg" alt="Category">
+                            {{ $category->name }}
+                        </h2>
+                        <div class="owl-carousel owl-theme">
+                            @foreach ($games as $game)
+                                @if ($category->id == $game->category_id)
+                                    <figure>
+                                        <img src="{{asset('images/' .$game->image)}}" alt="" class="slide">
+                                        <figcaption>{{ Str::words ($game->title, 3, '...') }}</figcaption>                        
+                                        <a href="{{ url('catalogue/' .$game->id)}}" class="btn-more">   
+                                            <img src="{{ asset('images/ico-more.svg')}}" alt="">
+                                            view                
+                                        </a>
+                                    </figure> 
+                                @endif
+                            @endforeach                            
+                        </div>
+                    </article> 
+                    @endif
+                @endforeach
+            </div>
         </section>
 
 @endsection
+
 @section('js')
 
 <script>
-        $(document).ready(function () {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                dots: false,
-                autoplay: false,
-                autoplayTimeout: 5000,
-                responsive: {
-                    0: {
-                        items: 2
-                    }
+    $(document).ready(function () {
+        // - - - - - - - - - - - - - - -
+        $('.owl-carousel').owlCarousel({
+            center: false,
+            loop: true,
+            margin: 0,
+            nav: true,
+            dots: false,
+            responsive:{
+                0:{
+                    items: 2
                 }
-            })
-            $('header').on('click', '.btn-burger', function(){
+            }
+        })
+        // - - - - - - - - - - - - - - -
+        $('header').on('click', '.btn-burger', function () {
             $(this).toggleClass('active')
             $('.nav').toggleClass('active')
         })
+        // - - - - - - - - - - - - - - -
+        $('body').on('change', '#fcat', function(event) {
+            event.preventDefault()
+            $fcat = $(this).val()
+            $tk   = $('input[name="_token"]').val()
+            $('.loader').removeClass('hidden')
+            $('#content').hide()
+            $sto = setTimeout(() => {
+                clearTimeout($sto)
+                $.post("gamesbycat", {
+                    fcat: $fcat,
+                    _token: $tk
+                },
+                    function (data) {
+                        $('.loader').addClass('hidden')
+                        $('#content').html(data).fadeIn('slow')
+                        $('.owl-carousel').owlCarousel({
+                            center: false,
+                            loop: true,
+                            margin: 0,
+                            nav: true,
+                            dots: false,
+                            responsive:{
+                                0:{
+                                    items: 2
+                                }
+                            }
+                        })
+                    })
+            }, 1500)
         })
+
+        // - - - - - - - - - - - - - - -
+    })
 </script>
 @endsection

@@ -361,7 +361,20 @@ main.catalogue {
                 }
             }
         }
-
+        .loader {
+            margin: 8rem auto;
+            width: 50px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: 
+            radial-gradient(farthest-side, #372948 94%,#0000) top/8px 8px no-repeat,
+            conic-gradient(#0000 30%,#372948);
+            -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+            animation: l13 1s infinite linear;
+        } 
+        .hidden {
+            display: none;
+        }
         article {
             h2 {
                 display: flex;
@@ -525,6 +538,12 @@ main.view-game{
             }
         }
     }
+    footer {
+        a.not-allowed {
+            pointer-events: none;
+            opacity: 0.4;
+        }
+    }
 }
 
 /* ------------------- */
@@ -650,7 +669,8 @@ main.my-profile {
 /* - - - - - - - - - - - - - - - - */
 main.dashboard,
 main.my-profile,
-main.users  {
+main.users,
+main.view-game  {
     nav.nav {
         align-items: center;
         gap: 0.5rem;
